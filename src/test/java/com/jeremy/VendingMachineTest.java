@@ -65,4 +65,37 @@ public class VendingMachineTest {
         //Assertion
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getListOfItemsForSale() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        Item item1 = new Item("Doritos", 0.75);
+        Item item2 = new Item("Coke", 1.00);
+        vendingMachine.addItem(item1);
+        vendingMachine.addItem(item2);
+
+        //Execution
+        ArrayList<String> expected = new ArrayList<String>(Arrays.asList("Doritos - $0.75", "Coke - $1"));
+        ArrayList<String> actual = vendingMachine.getSalesList();
+        System.out.println(actual);
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getDepositedMoney() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+
+        //Execution
+        vendingMachine.deposit(1);
+        vendingMachine.deposit(0.5);
+        double expected = 1.50;
+        double actual = vendingMachine.getDeposited();
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
 }

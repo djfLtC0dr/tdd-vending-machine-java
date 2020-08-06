@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.jeremy.VendingMachineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-06T18:42:23" hostname="LAPTOP-PPQ781RU" time="0.013">
+<testsuite name="com.jeremy.VendingMachineTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-08-06T19:05:47" hostname="LAPTOP-PPQ781RU" time="0.02">
   <properties/>
-  <testcase name="getCurrentStockShowsEmptyByDefault()" classname="com.jeremy.VendingMachineTest" time="0.009"/>
+  <testcase name="getCurrentStockShowsEmptyByDefault()" classname="com.jeremy.VendingMachineTest" time="0.008"/>
   <testcase name="getSalesReturnsZeroByDefault()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
   <testcase name="addItemChangesInventory()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
-  <testcase name="getSalesWhenItemsPurchased()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="getListOfItemsForSale()" classname="com.jeremy.VendingMachineTest" time="0.004"/>
+  <testcase name="getSalesWhenItemsPurchased()" classname="com.jeremy.VendingMachineTest" time="0.002"/>
+  <testcase name="getDepositedMoney()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
+  <system-out><![CDATA[[Doritos - $0.75, Coke - $1]
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
