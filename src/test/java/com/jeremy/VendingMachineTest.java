@@ -4,8 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VendingMachineTest {
     @Test
@@ -14,8 +17,8 @@ public class VendingMachineTest {
         VendingMachine vendingMachine = new VendingMachine();
 
         //Execution
-        ArrayList<Item> expected = new ArrayList<>();
-        ArrayList<Item> actual = vendingMachine.getInventory();
+        Map<String, Item> expected = new HashMap<>();
+        Map<String, Item> actual = vendingMachine.getInventory();
 
         //Assertions
         assertEquals(expected, actual);
@@ -29,9 +32,9 @@ public class VendingMachineTest {
         //Execution
         Item item1 = new Item("Doritos", 0.75);
         vendingMachine.addItem(item1);
-        ArrayList<Item> expected = new ArrayList<>();
-        expected.add(item1);
-        ArrayList<Item> actual = vendingMachine.getInventory();
+        Map<String, Item> expected = new HashMap<>();
+        expected.put("A1", item1);
+        Map<String, Item> actual = vendingMachine.getInventory();
 
         //Assertions
         assertEquals(expected, actual);
@@ -54,11 +57,12 @@ public class VendingMachineTest {
     public void getSalesWhenItemsPurchased() {
         //Setup
         VendingMachine vendingMachine = new VendingMachine();
+        vendingMachine.deposit(1);
 
         //Execution
         Item item1 = new Item("Doritos", 0.75);
         vendingMachine.addItem(item1);
-        vendingMachine.purchase("Doritos");
+        vendingMachine.purchase("A1");
         double expected = 0.75;
         double actual = vendingMachine.getSales();
 
@@ -92,8 +96,54 @@ public class VendingMachineTest {
         //Execution
         vendingMachine.deposit(1);
         vendingMachine.deposit(0.5);
-        double expected = 1.50;
+        double expected = 1.5;
         double actual = vendingMachine.getDeposited();
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void throwsExceptionForInvalidCodeForPurchase() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        String expected = "Entered code is not valid";
+
+        //Execution
+        Exception actual = assertThrows(IllegalArgumentException.class, () -> vendingMachine.purchase(("A5")));
+
+        //Assertion
+        assertEquals(expected, actual.getMessage());
+    }
+
+    @Test
+    public void throwsExceptionForInsufficientFundsForPurchase() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        String expected = "Not enough deposited for this purchase";
+        vendingMachine.deposit(0.5);
+        Item item1 = new Item("Doritos", 0.75);
+        vendingMachine.addItem(item1);
+
+        //Execution
+        Exception actual = assertThrows(IllegalArgumentException.class, () -> vendingMachine.purchase(("A1")));
+
+        //Assertion
+        assertEquals(expected, actual.getMessage());
+    }
+
+    @Test
+    public void getChangeWhenSalesComplete() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        vendingMachine.deposit(1);
+
+        //Execution
+        Item item1 = new Item("Doritos", 0.75);
+        vendingMachine.addItem(item1);
+        vendingMachine.purchase("A1");
+        double expected = 0.25;
+        double actual = vendingMachine.getChange();
 
         //Assertion
         assertEquals(expected, actual);
