@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.jeremy.VendingMachineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-08-06T18:29:22" hostname="LAPTOP-PPQ781RU" time="0.014">
+<testsuite name="com.jeremy.VendingMachineTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-08-06T18:42:23" hostname="LAPTOP-PPQ781RU" time="0.013">
   <properties/>
   <testcase name="getCurrentStockShowsEmptyByDefault()" classname="com.jeremy.VendingMachineTest" time="0.009"/>
-  <testcase name="addItemChangesInventory()" classname="com.jeremy.VendingMachineTest" time="0.004"/>
-  <system-out><![CDATA[[com.jeremy.Item@160d9732]
-[com.jeremy.Item@160d9732]
-]]></system-out>
+  <testcase name="getSalesReturnsZeroByDefault()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
+  <testcase name="addItemChangesInventory()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
+  <testcase name="getSalesWhenItemsPurchased()" classname="com.jeremy.VendingMachineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

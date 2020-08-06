@@ -22,7 +22,7 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void addItemChangesInventory(){
+    public void addItemChangesInventory() {
         //Setup
         VendingMachine vendingMachine = new VendingMachine();
 
@@ -34,6 +34,35 @@ public class VendingMachineTest {
         ArrayList<Item> actual = vendingMachine.getInventory();
 
         //Assertions
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getSalesReturnsZeroByDefault() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+
+        //Execution
+        double expected = 0;
+        double actual = vendingMachine.getSales();
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getSalesWhenItemsPurchased() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+
+        //Execution
+        Item item1 = new Item("Doritos", 0.75);
+        vendingMachine.addItem(item1);
+        vendingMachine.purchase("Doritos");
+        double expected = 0.75;
+        double actual = vendingMachine.getSales();
+
+        //Assertion
         assertEquals(expected, actual);
     }
 }
