@@ -148,4 +148,32 @@ public class VendingMachineTest {
         //Assertion
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void machineCannotMakeChange() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        vendingMachine.deposit(20);
+
+        //Execution
+        boolean expected = false;
+        boolean actual = vendingMachine.canMakeChange();
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void machineCanMakeChange() {
+        //Setup
+        VendingMachine vendingMachine = new VendingMachine();
+        vendingMachine.deposit(5);
+
+        //Execution
+        boolean expected = true;
+        boolean actual = vendingMachine.canMakeChange();
+
+        //Assertion
+        assertEquals(expected, actual);
+    }
 }

@@ -10,6 +10,7 @@ public class VendingMachine {
     private Map<String, Item> items = new HashMap<>();
     private double sales = 0;
     private double deposited = 0;
+    private double cashOnHand = 10;
 
     public Map<String, Item> getInventory() {
         return items;
@@ -59,5 +60,13 @@ public class VendingMachine {
         double change = this.deposited;
         this.deposited = 0;
         return change;
+    }
+
+    public boolean canMakeChange() {
+        if (this.deposited > this.cashOnHand) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
