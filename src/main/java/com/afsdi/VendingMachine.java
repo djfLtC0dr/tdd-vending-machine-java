@@ -1,4 +1,4 @@
-package com.jeremy;
+package com.afsdi;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

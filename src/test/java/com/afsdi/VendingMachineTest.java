@@ -1,4 +1,4 @@
-package com.jeremy;
+package com.afsdi;
 
 import org.junit.jupiter.api.Test;
 

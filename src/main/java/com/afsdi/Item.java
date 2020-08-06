@@ -1,4 +1,4 @@
-package com.jeremy;
+package com.afsdi;
 
 public class Item {
     String itemName = "";
